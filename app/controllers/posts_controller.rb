@@ -10,8 +10,12 @@ class PostsController < ApplicationController
   # end
 
   def create
-    Post.create(content: params[:content])
-    redirect_to action: :index
+    # 既読や未読の情報を追加したため「メモ作成時に未読の情報を保存するようにしたこと」と、
+    # Ajaxを実現するため「レスポンスをJSONに変更したこと」です。
+    # Post.create(content: params[:content])
+    # redirect_to action: :index
+    post = Post.create(content: params[:content], checked: false)
+    render json:{ post: post }
   end
 
   # 下記のように、posts_controller.rbにcheckedというアクションを定義しましょう。checkedアクションは、「既読」の操作を行ったときに実行されるアクションです
