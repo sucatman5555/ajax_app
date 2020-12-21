@@ -16,6 +16,9 @@ class PostsController < ApplicationController
 
   # 下記のように、posts_controller.rbにcheckedというアクションを定義しましょう。checkedアクションは、「既読」の操作を行ったときに実行されるアクションです
   def checked
+    # ここで一度、メモをクリックした際に/posts/:idというエンドポイントへアクセスされているか確認してみましょう。
+    # gem pry-railsを導入し、postsコントローラーのcheckedアクションにbinding.pryを記述して、メモをクリックした時に処理が止まるかを確認しましょう。
+    # binding.pry
     # 先ほど設定したURLパラメーターから、既読したメモのidが渡されるように設定するので、そのidを使用して該当するレコードを取得しています。
     post = Post.find(params[:id])
     # if文で、post.checkedという既読であるか否かを判定するプロパティを指定し、既読であれば「既読を解除するためにfalseへ変更」し、
