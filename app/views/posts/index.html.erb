@@ -5,7 +5,15 @@
 <% end %>
 
 <% @posts.each do |post| %>
-<div class="post">
+<%# 
+ この部分を「クリックした時」にイベントを発火させたいので、クリックされる部分の要素を取得するためにchecked.jsへ下記のように記述します。 
+>
+<%#
+  data-idとdata-checkのカスタムデータ属性を追加しました。
+  前者はメモのidが入り、後者は既読の有無を管理するcheckedカラムの情報が入ります。
+ <div class="post">  変更前
+%>
+<div class="post" data-id=<%= post.id %> data-check=<%= post.checked %>>
   <div class="post-date">
     投稿日時：<%= post.created_at %>
   </div>
@@ -13,4 +21,5 @@
     <%= post.content %>
   </div>
 </div>
+<%#  end %>
 <% end %>
